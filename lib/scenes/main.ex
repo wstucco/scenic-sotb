@@ -1,4 +1,4 @@
-defmodule SOTB.Scene.Main do
+defmodule Sotb.Scene.Main do
   @moduledoc """
   Sample splash scene.
 
@@ -7,10 +7,10 @@ defmodule SOTB.Scene.Main do
   It also shows how to load a static texture and paint it into a rectangle.
   """
 
-  use SOTB.Scene
+  use ScenicME.Scene
   alias Scenic.Graph
 
-  alias SOTB.Component.{
+  alias Sotb.Component.{
     Airships,
     Beast,
     FPS,
@@ -42,7 +42,6 @@ defmodule SOTB.Scene.Main do
         end,
         scale: 0.5
       )
-      # |> Nav.add_to_graph(__MODULE__)
       |> push_graph
 
     {:ok, %{graph: graph}}

@@ -1,9 +1,9 @@
-defmodule SOTB.Component.HorizontalScroller do
-  use SOTB.Component
+defmodule Sotb.Component.HorizontalScroller do
+  use ScenicME.Component
   alias Scenic.Graph
 
   import Scenic.Primitives, only: [{:group, 3}, {:update_opts, 2}]
-  import SOTB.Component.Helpers
+  import Sotb.Component.Helpers
 
   @default %{
     direction: :right

@@ -1,4 +1,4 @@
-defmodule SOTB.Matrix do
+defmodule ScenicME.Matrix do
   @matrix_identity <<
     1.0::float-size(32)-native,
     0.0::float-size(32)-native,

@@ -1,10 +1,10 @@
-defmodule SOTB.Component.ParallaxBackground do
-  use SOTB.Component
+defmodule Sotb.Component.ParallaxBackground do
+  use ScenicME.Component
 
   alias Scenic.Graph
-  alias SOTB.Asset
+  alias ScenicME.Asset
 
-  import SOTB.Component.Helpers
+  import Sotb.Component.Helpers
 
   @assets 1..12
           |> Enum.reduce(%{}, fn i, acc ->

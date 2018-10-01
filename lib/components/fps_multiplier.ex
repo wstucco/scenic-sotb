@@ -1,5 +1,5 @@
-defmodule SOTB.Component.FPSMultiplier do
-  use SOTB.Component
+defmodule Sotb.Component.FPSMultiplier do
+  use ScenicME.Component
 
   alias Scenic.Graph
   import Scenic.Primitives, only: [{:text, 3}]

@@ -1,4 +1,4 @@
-defmodule SOTB.Scene do
+defmodule ScenicME.Scene do
   defmacro __using__(_opts) do
     quote do
       use Scenic.Scene

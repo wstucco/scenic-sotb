@@ -1,11 +1,11 @@
-defmodule SOTB.Component.Beast do
-  use SOTB.Component
+defmodule Sotb.Component.Beast do
+  use ScenicME.Component
 
   alias Scenic.Graph
-  alias SOTB.Asset
+  alias ScenicME.Asset
 
   import Scenic.Primitives, only: [{:rect, 3}, {:group, 3}, {:update_opts, 2}]
-  import SOTB.Component.Helpers
+  import Sotb.Component.Helpers
 
   @assets 1..5
           |> Enum.map(fn i ->

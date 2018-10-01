@@ -1,11 +1,11 @@
-defmodule SOTB.Component do
+defmodule ScenicME.Component do
   @callback animation_frame(animation_state :: any, state :: any) :: {:noreply, state :: any}
 
   defmacro __using__(_opts) do
     quote do
       use Scenic.Component
 
-      @behaviour SOTB.Component
+      @behaviour ScenicME.Component
 
       def init({data, parent}, opts) do
         send_event(:component_created)

@@ -1,4 +1,4 @@
-defmodule SOTB.Component.Nav do
+defmodule Sotb.Component.Nav do
   use Scenic.Component
 
   alias Scenic.ViewPort
@@ -32,11 +32,11 @@ defmodule SOTB.Component.Nav do
       |> text("Scene:", translate: {14, 35}, align: :right)
       |> dropdown(
         {[
-           {"Main", SOTB.Scene.Main},
-           {"Sensor", SOTB.Scene.Sensor},
-           {"Primitives", SOTB.Scene.Primitives},
-           {"Components", SOTB.Scene.Components},
-           {"Transforms", SOTB.Scene.Transforms}
+           {"Main", ScenicME.Scene.Main},
+           {"Sensor", ScenicME.Scene.Sensor},
+           {"Primitives", ScenicME.Scene.Primitives},
+           {"Components", ScenicME.Scene.Components},
+           {"Transforms", ScenicME.Scene.Transforms}
          ], current_scene},
         id: :nav,
         translate: {70, 15}

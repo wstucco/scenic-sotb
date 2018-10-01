@@ -1,11 +1,11 @@
-defmodule SOTB.Component.Airships do
-  use SOTB.Component
+defmodule Sotb.Component.Airships do
+  use ScenicME.Component
 
   alias Scenic.Graph
-  alias SOTB.Asset
+  alias ScenicME.Asset
 
   import Scenic.Primitives, only: [{:update_opts, 2}]
-  import SOTB.Component.Helpers
+  import Sotb.Component.Helpers
 
   @large_start -192
   @large_max 768 * 4

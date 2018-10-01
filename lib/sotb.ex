@@ -1,4 +1,4 @@
-defmodule SOTB do
+defmodule Sotb do
   @moduledoc """
   Starter application using the Scenic framework.
   """

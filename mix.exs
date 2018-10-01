@@ -1,4 +1,4 @@
-defmodule SOTB.MixProject do
+defmodule ScenicME.MixProject do
   use Mix.Project
 
   def project do
@@ -15,7 +15,7 @@ defmodule SOTB.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      mod: {SOTB, []},
+      mod: {Sotb, []},
       extra_applications: []
     ]
   end

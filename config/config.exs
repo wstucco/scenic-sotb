@@ -6,7 +6,7 @@ use Mix.Config
 config :sotb, :viewport, %{
   name: :main_viewport,
   size: {768, 600},
-  default_scene: {SOTB.Scene.Main, SOTB.Scene.Sensor},
+  default_scene: {Sotb.Scene.Main, nil},
   drivers: [
     %{
       module: Scenic.Driver.Glfw,

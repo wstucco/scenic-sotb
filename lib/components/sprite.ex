@@ -1,9 +1,9 @@
-defmodule SOTB.Component.Sprite do
+defmodule Sotb.Component.Sprite do
   use Scenic.Component
   alias Scenic.Graph
 
   import Scenic.Primitives, only: [{:rect, 3}, {:group, 3}]
-  import SOTB.Component.Helpers
+  import Sotb.Component.Helpers
 
   def verify(scene) when is_atom(scene), do: {:ok, scene}
   def verify({scene, _} = data) when is_atom(scene), do: {:ok, data}

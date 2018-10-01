@@ -1,5 +1,5 @@
-defmodule SOTB.Component.FPS do
-  use SOTB.Component
+defmodule Sotb.Component.FPS do
+  use ScenicME.Component
 
   alias Scenic.Graph
   import Scenic.Primitives, only: [{:text, 3}]

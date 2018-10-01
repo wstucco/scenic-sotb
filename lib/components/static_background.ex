@@ -1,10 +1,9 @@
-defmodule SOTB.Component.StaticBackground do
+defmodule Sotb.Component.StaticBackground do
   use Scenic.Component
 
   alias Scenic.Graph
-  alias SOTB.Asset
-
-  import SOTB.Component.Helpers
+  alias ScenicME.Asset
+  import Sotb.Component.Helpers
 
   @background {
     Asset.image("sotb/sotb_bkg.png"),

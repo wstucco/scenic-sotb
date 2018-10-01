@@ -1,6 +1,10 @@
-defmodule SOTB.Component.Helpers do
+defmodule Sotb.Component.Helpers do
   alias Scenic.ViewPort
-  alias SOTB.Component.{Sprite, HorizontalScroller}
+
+  alias Sotb.Component.{
+    Sprite,
+    HorizontalScroller
+  }
 
   def viewport_size(pid) when is_pid(pid), do: viewport_size(pid |> ViewPort.info())
 

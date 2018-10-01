@@ -1,4 +1,4 @@
-defmodule SOTB.Asset do
+defmodule ScenicME.Asset do
   @base_path :code.priv_dir(:sotb)
 
   def asset(path) do
