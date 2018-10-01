@@ -1,9 +1,9 @@
-defmodule MyApp.Component.HorizontalScroller do
-  use Scenic.Component
+defmodule SOTB.Component.HorizontalScroller do
+  use SOTB.Component
   alias Scenic.Graph
 
   import Scenic.Primitives, only: [{:group, 3}, {:update_opts, 2}]
-  import MyApp.Component.Helpers
+  import SOTB.Component.Helpers
 
   @default %{
     direction: :right
@@ -13,9 +13,9 @@ defmodule MyApp.Component.HorizontalScroller do
   def verify({scene, _} = data) when is_atom(scene), do: {:ok, data}
   def verify(_), do: :invalid_data
 
-  def init({:ok, data}, opts \\ []) do
+  def init({:ok, %{size: {width, _}} = data}, opts, _parent) do
+    viewport_width = data[:viewport_width] || viewport_width(opts[:viewport])
     hash = hash()
-    {width, _} = data[:size]
 
     graph =
       Graph.build()
@@ -23,12 +23,7 @@ defmodule MyApp.Component.HorizontalScroller do
         fn g ->
           g
           |> group(
-            fn g ->
-              g
-              |> add_sprite(data, translate: {-width, 0})
-              |> add_sprite(data, translate: {0, 0})
-              |> add_sprite(data, translate: {width, 0})
-            end,
+            &add_sprites(&1, data, viewport_width),
             translate: {0, 0},
             id: hash
           )
@@ -37,8 +32,6 @@ defmodule MyApp.Component.HorizontalScroller do
       )
       |> push_graph()
 
-    :timer.send_interval(8, :animate)
-
     state =
       @default
       |> Map.merge(data)
@@ -46,47 +39,47 @@ defmodule MyApp.Component.HorizontalScroller do
         hash: hash,
         graph: graph,
         width: width,
-        x: 0
+        x: 0,
+        speed: data[:speed] || 1
       })
 
     {:ok, state}
   end
 
-  def handle_info(:animate, %{x: x, width: width, direction: :right} = state)
+  def animation_frame(_sc_state, %{x: x, width: width, direction: :right} = state)
       when x >= width do
     {:noreply, state |> reset_position()}
   end
 
-  def handle_info(:animate, %{x: x, width: width} = state)
+  def animation_frame(_sc_state, %{x: x, width: width} = state)
       when x <= -width do
     {:noreply, state |> reset_position()}
   end
 
-  def handle_info(:animate, %{graph: graph, hash: hash} = state) do
+  def animation_frame(_sc_state, %{graph: graph, hash: hash} = state) do
     new_x = state |> update_position
 
     graph =
       graph
-      |> Graph.modify(
-        hash,
-        &update_opts(&1,
-          translate: {trunc(new_x), 0}
-        )
-      )
+      |> Graph.modify(hash, &update_opts(&1, translate: {trunc(new_x), 0}))
       |> push_graph()
 
     {:noreply, %{state | graph: graph, x: new_x}}
   end
 
+  defp add_sprites(graph, %{size: {width, _}} = data, viewport_width) do
+    parts = (viewport_width / width) |> Float.ceil() |> trunc
+
+    -parts..parts
+    |> Enum.reduce(graph, fn multiplier, g ->
+      g |> add_sprite(data, translate: {width * multiplier, 0})
+    end)
+  end
+
   defp reset_position(%{graph: graph, hash: hash} = state) do
     graph =
       graph
-      |> Graph.modify(
-        hash,
-        &update_opts(&1,
-          translate: {0, 0}
-        )
-      )
+      |> Graph.modify(hash, &update_opts(&1, translate: {0, 0}))
       |> push_graph()
 
     %{state | graph: graph, x: 0}

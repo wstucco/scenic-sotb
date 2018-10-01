@@ -1,12 +1,20 @@
-defmodule MyApp.Component.StaticBackground do
+defmodule SOTB.Component.StaticBackground do
   use Scenic.Component
 
-  alias Scenic.ViewPort
   alias Scenic.Graph
-  alias MyApp.Asset
-  alias MyApp.Component.Sprite
+  alias SOTB.Asset
 
-  import MyApp.Component.Helpers
+  import SOTB.Component.Helpers
+
+  @background {
+    Asset.image("sotb/sotb_bkg.png"),
+    Asset.hash(Asset.image("sotb/sotb_bkg.png"))
+  }
+
+  @moon {
+    Asset.image("sotb/sotb_moon.png"),
+    Asset.hash(Asset.image("sotb/sotb_moon.png"))
+  }
 
   # --------------------------------------------------------
   def verify(scene) when is_atom(scene), do: {:ok, scene}
@@ -20,14 +28,22 @@ defmodule MyApp.Component.StaticBackground do
     graph =
       Graph.build()
       |> add_sprite(%{
-        path: Asset.image("sotb/sotb_bkg.png"),
+        path: @background,
         size: {786, 600}
       })
-      |> add_sprite(%{
-          path: Asset.image("sotb/sotb_moon.png"),
+      |> add_sprite(
+        %{
+          path: @background,
+          size: {786, 600}
+        },
+        translate: {width, 0}
+      )
+      |> add_sprite(
+        %{
+          path: @moon,
           size: {159, 159}
         },
-        translate: {width - 300, 80}
+        translate: {width * 2 - 300, 80}
       )
       |> push_graph()
 

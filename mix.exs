@@ -1,9 +1,9 @@
-defmodule MyApp.MixProject do
+defmodule SOTB.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :my_app,
+      app: :sotb,
       version: "0.1.0",
       elixir: "~> 1.7",
       build_embedded: true,
@@ -15,7 +15,7 @@ defmodule MyApp.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      mod: {MyApp, []},
+      mod: {SOTB, []},
       extra_applications: []
     ]
   end
@@ -29,7 +29,8 @@ defmodule MyApp.MixProject do
       # These deps are optional and are included as they are often used.
       # If your app doesn't need them, they are safe to remove.
       {:scenic_sensor, "~> 0.7"},
-      {:scenic_clock, ">= 0.0.0"}
+      {:scenic_clock, ">= 0.0.0"},
+      {:number, ">= 0.0.0"}
     ]
   end
 end

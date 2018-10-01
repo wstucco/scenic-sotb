@@ -3,15 +3,15 @@
 use Mix.Config
 
 # Configure the main viewport for the Scenic application
-config :my_app, :viewport, %{
+config :sotb, :viewport, %{
   name: :main_viewport,
   size: {768, 600},
-  default_scene: {MyApp.Scene.Main, MyApp.Scene.Sensor},
+  default_scene: {SOTB.Scene.Main, SOTB.Scene.Sensor},
   drivers: [
     %{
       module: Scenic.Driver.Glfw,
       name: :glfw,
-      opts: [resizeable: false, title: "my_app"]
+      opts: [resizeable: false, title: "Shadow of the Beast"]
     }
   ]
 }
