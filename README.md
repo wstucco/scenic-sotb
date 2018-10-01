@@ -15,3 +15,4 @@ Follow the instruction and install [the `scenic_driver_glfw`](https://github.com
 documentation will follow soon  
 Enoy the beast!
 
+![Shadow of the Beast](priv/static/screenshot.png "Shadow of the Beast")
